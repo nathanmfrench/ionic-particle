@@ -3,48 +3,47 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>away</ion-title>
+    <ion-title>UV Sensor</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding> 
+<ion-content padding class="bg"> 
   <div *ngIf="!particle.token">
       Please login and select a device. <br />
       <button ion-button (click)="login()">Login</button>
   </div>
   <div *ngIf="particle.token && particle.device">
-      <h3>Particle.io Device App Boilerplate</h3>
+      <h3></h3>
       <div>
-          <h5>Particle device status</h5>
+          <h5>Safe UV Level</h5>
           <p>
-            You can display different device states by checking <code>particle.device</code>
+            Anything below 3 is safe, so in this case it is not completely necessary to apply sunscreen.
           </p>
-          <p *ngIf="!particle.device || !particle.device.connected">The device is offline</p>
-          <p *ngIf="particle.device && particle.device.connected">You are currently viewing {{particle.device.name}}</p>
+          <p *ngIf="!particle.device || !particle.device.connected">If the UV level is above 3, make sure to apply suncreen.</p>
+          <p *ngIf="particle.device && particle.device.connected">The UV level at which you should wear sunscreen is anything greater than or equal to 3. 
+          </p>
       </div>
       <div>
-          <h5>Device variables</h5>
-          <p>
+          <h5>Current UV Reading</h5>
+          <p> <!--
             You can subscribe to variables by calling <code>particle.pollVariable</code>.
-          </p>
+          --></p>
           <p>
-            The device variable "var1" automatically polls, and the current value is {{var1}}
+            The current UV level is {{uv}}
           </p>
       </div>
       <div>
-          <h5>Custom components</h5>
+          <h5>Why is this important?</h5>
           <p>
-            You can also create custom components. It's also more efficient to update components by subscribing to events 
-            from your device, by calling <code>particle.subscribe</code>
+            Skin cancer is gradually becoming more prevalent in our United States communities. Recent statistics show 20% of people are diagnosed with skin cancer in their lifetimes. Wearing sunscreen can drastically lessen this number. 
           </p>
-          <particle-progress [event]="'variableUpdate'" [min]="2" [max]="10"></particle-progress>
       </div>
-      <div>
+      <div> <!--
         <h5>Calling functions</h5>
         <p>
             You can call device functions with <code>particle.callFunction</code>
         </p>
-        <button ion-button (click)="particle.callFunction('fun1')">Call a function</button>
+        <button ion-button (click)="particle.callFunction('fun1')">Call a function</button> -->
       </div>
   </div>
 </ion-content>
